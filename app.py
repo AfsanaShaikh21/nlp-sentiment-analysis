@@ -390,13 +390,13 @@ def extract_keywords(reviews):
 
 
 
-def create_business_insights(df):
+def create_business_insights(history):
 
-    positive_reviews = df[
+    positive_reviews = history[
         df["Sentiment"] == "Positive"
     ]["Review"].tolist()
 
-    negative_reviews = df[
+    negative_reviews = history[
         df["Sentiment"] == "Negative"
     ]["Review"].tolist()
 
@@ -406,16 +406,7 @@ def create_business_insights(df):
 
     return positive_keywords, negative_keywords
 
-business_history = history.rename(columns={
-    "sentiment": "Sentiment",
-    "review": "Review",
-    "confidence": "Confidence",
-    "created_at": "Created_At"
-})
 
-positive_keywords, negative_keywords = create_business_insights(
-    business_history
-)
 
 
 # =====================================================
@@ -1008,9 +999,8 @@ elif page == "Business Insights":
             history["sentiment"] == "Negative"
         ]["review"].tolist()
 
-        positive_keywords, negative_keywords = (
+        positive_keywords, negative_keywords = 
             create_business_insights(history)
-        )
 
         left, right = st.columns(2)
 

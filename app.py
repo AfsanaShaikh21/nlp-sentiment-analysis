@@ -393,12 +393,12 @@ def extract_keywords(reviews):
 def create_business_insights(history):
 
     positive_reviews = history[
-        history["Sentiment"] == "Positive"
-    ]["Review"].tolist()
+        history["sentiment"] == "Positive"
+    ]["review"].tolist()
 
     negative_reviews = history[
-        history["Sentiment"] == "Negative"
-    ]["Review"].tolist()
+        history["sentiment"] == "Negative"
+    ]["review"].tolist()
 
     positive_keywords = extract_keywords(positive_reviews)
 

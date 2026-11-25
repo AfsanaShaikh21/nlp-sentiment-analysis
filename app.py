@@ -389,6 +389,7 @@ def extract_keywords(reviews):
     return Counter(words).most_common(10)
 
 
+
 def create_business_insights(df):
 
     positive_reviews = df[
@@ -404,6 +405,17 @@ def create_business_insights(df):
     negative_keywords = extract_keywords(negative_reviews)
 
     return positive_keywords, negative_keywords
+
+business_history = history.rename(columns={
+    "sentiment": "Sentiment",
+    "review": "Review",
+    "confidence": "Confidence",
+    "created_at": "Created_At"
+})
+
+positive_keywords, negative_keywords = create_business_insights(
+    business_history
+)
 
 
 # =====================================================

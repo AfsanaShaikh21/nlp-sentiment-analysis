@@ -999,8 +999,9 @@ elif page == "Business Insights":
             history["sentiment"] == "Negative"
         ]["review"].tolist()
 
-        positive_keywords, negative_keywords = 
+        positive_keywords, negative_keywords = (
             create_business_insights(history)
+        )
 
         left, right = st.columns(2)
 
